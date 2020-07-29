@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [mustafaaydin]
+    WITH PASSWORD = N'sxzvg3gnji&xjudn4QG|uYmrmsFT7_&#$!~<cfZfduscoloo', SID = 0xE704496F89B6E74CA200A3B22EEA9449, DEFAULT_LANGUAGE = [us_english], CHECK_EXPIRATION = ON;
+

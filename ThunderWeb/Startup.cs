@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using ThunderWeb.Data;
 
 namespace ThunderWeb
 {
@@ -33,6 +35,9 @@ namespace ThunderWeb
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<ThunderWebContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ThunderWebContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
