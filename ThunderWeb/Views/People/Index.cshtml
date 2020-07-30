@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ThunderWeb.Book>
+﻿@model IEnumerable<ThunderWeb.Models.People>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,18 +13,17 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                @Html.DisplayNameFor(model => model.sirname)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.reader)
+                @Html.DisplayNameFor(model => model.age)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.comment)
+                @Html.DisplayNameFor(model => model.interests)
             </th>
-
             <th></th>
         </tr>
     </thead>
@@ -32,18 +31,17 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Author)
+                @Html.DisplayFor(modelItem => item.sirname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.reader)
+                @Html.DisplayFor(modelItem => item.age)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.comment)
+                @Html.DisplayFor(modelItem => item.interests)
             </td>
-
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

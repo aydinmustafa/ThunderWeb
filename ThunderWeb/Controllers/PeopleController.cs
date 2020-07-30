@@ -5,27 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ThunderWeb;
 using ThunderWeb.Data;
+using ThunderWeb.Models;
 
 namespace ThunderWeb.Controllers
 {
-    public class BooksController : Controller
+    public class PeopleController : Controller
     {
         private readonly ThunderWebContext _context;
 
-        public BooksController(ThunderWebContext context)
+        public PeopleController(ThunderWebContext context)
         {
             _context = context;
         }
 
-        // GET: Books
+        // GET: People
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Book.ToListAsync());
+            return View(await _context.People.ToListAsync());
         }
 
-        // GET: Books/Details/5
+        // GET: People/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace ThunderWeb.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Book
+            var people = await _context.People
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (book == null)
+            if (people == null)
             {
                 return NotFound();
             }
 
-            return View(book);
+            return View(people);
         }
 
-        // GET: Books/Create
+        // GET: People/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Books/Create
+        // POST: People/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name, Author, reader, comment")] Book book)
+        public async Task<IActionResult> Create([Bind("Id,name,sirname,age,interests")] People people)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(book);
+                _context.Add(people);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(book);
+            return View(people);
         }
 
-        // GET: Books/Edit/5
+        // GET: People/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace ThunderWeb.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Book.FindAsync(id);
-            if (book == null)
+            var people = await _context.People.FindAsync(id);
+            if (people == null)
             {
                 return NotFound();
             }
-            return View(book);
+            return View(people);
         }
 
-        // POST: Books/Edit/5
+        // POST: People/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Author, reader, comment")] Book book)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,name,sirname,age,interests")] People people)
         {
-            if (id != book.Id)
+            if (id != people.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace ThunderWeb.Controllers
             {
                 try
                 {
-                    _context.Update(book);
+                    _context.Update(people);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BookExists(book.Id))
+                    if (!PeopleExists(people.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace ThunderWeb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(book);
+            return View(people);
         }
 
-        // GET: Books/Delete/5
+        // GET: People/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace ThunderWeb.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Book
+            var people = await _context.People
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (book == null)
+            if (people == null)
             {
                 return NotFound();
             }
 
-            return View(book);
+            return View(people);
         }
 
-        // POST: Books/Delete/5
+        // POST: People/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var book = await _context.Book.FindAsync(id);
-            _context.Book.Remove(book);
+            var people = await _context.People.FindAsync(id);
+            _context.People.Remove(people);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BookExists(string id)
+        private bool PeopleExists(string id)
         {
-            return _context.Book.Any(e => e.Id == id);
+            return _context.People.Any(e => e.Id == id);
         }
     }
 }

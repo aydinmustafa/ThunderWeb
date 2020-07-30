@@ -9,9 +9,9 @@ namespace ThunderWeb
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        //public string author { get; set; }
-        //public string reader { get; set; }
-        //public string comment { get; set; }
+        public string Author { get; set; }
+        public string reader { get; set; }
+        public string comment { get; set; }
         //public int point { get; set; }
         //public string advice { get; set; }
     }

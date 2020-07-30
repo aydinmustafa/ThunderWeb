@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ThunderWeb;
+using ThunderWeb.Models;
 
 namespace ThunderWeb.Data
 {
@@ -16,5 +17,7 @@ namespace ThunderWeb.Data
         }
 
         public DbSet<ThunderWeb.Book> Book { get; set; }
+
+        public DbSet<ThunderWeb.Models.People> People { get; set; }
     }
 }

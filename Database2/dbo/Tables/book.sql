@@ -1,7 +1,12 @@
 ﻿CREATE TABLE [dbo].[book] (
-    [id]   NVARCHAR (36) NOT NULL,
+    [Id]   NVARCHAR (450) NOT NULL,
     [name] NVARCHAR (36) NULL,
    
-    PRIMARY KEY CLUSTERED ([id] ASC)
+    [author] NVARCHAR(50) NULL,
+    [reader] NVARCHAR(50) NULL,
+    [comment] NVARCHAR(50) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 
